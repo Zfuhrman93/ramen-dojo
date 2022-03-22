@@ -1,4 +1,4 @@
-Ramen Dojo
+Ramen Dojo -
 MERN Stack
 
 We are creating a ramen restaurant ordering site. It will include a Login-Register page, a way to log past orders, a list of favorite orders, and a Build-a-Bowl feature. 

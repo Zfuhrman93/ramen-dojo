@@ -6,7 +6,7 @@ Backlog features include a Mapping API and a rewards system.
 
 
 Roles:
-Jimmy - Back End
-Zach - Back End
-Tito - Front End
+Jimmy - Back End,
+Zach - Back End,
+Tito - Front End,
 Andrea - Front End

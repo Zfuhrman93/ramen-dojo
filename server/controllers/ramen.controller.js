@@ -20,7 +20,7 @@ module.exports.deleteRamen = (req, res) => {
 }
 
 module.exports.updateRamen = (req, res) => {
-    Ramen.findOneAndUpdate({_id: req.params.id})
+    Ramen.findOneAndUpdate({_id: req.params.id}, req.body, { new: true, runValidators: true })
         .then(updateRamen => res.json(updateRamen))
         .catch(err => res.json(err))
 }

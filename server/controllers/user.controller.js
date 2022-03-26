@@ -31,6 +31,15 @@ const registerUser = async (req, res) => {
   }
 }
 
+const updateUser = async (req, res) => {
+  try{ 
+    const user = await User.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true, runValidators: true});
+    res.json(user);
+  }catch(err){
+    res.status(400).json(err);
+  }
+}
+
 const login = async (req, res) => {
   const { body } = req;
   if(!body.email) {
@@ -87,6 +96,7 @@ const logout = async (req, res) => {
 module.exports = {
   getUser,
   registerUser,
+  updateUser,
   login,
   protected,
   logout

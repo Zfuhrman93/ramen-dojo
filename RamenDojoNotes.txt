@@ -1,0 +1,7 @@
+- When a user is created a cart is also created that is associated with the user
+- When a user clicks "add to cart" the item is added to the cart
+- When a user clicks "checkout" it displays a summary page and payment components (this can be eliminated for the project and substituted with the "order")
+- When a user clicks "order" it creates an order and adds all the items in the cart to the order. It also removes all the items in the cart ()
+
+Order {UserCart = [ramen1, ramen2, ramen3] => UserOrder = [ramen1, ramen2, ramen3]} + {UserCart = [ramen1, ramen2, ramen3] => UserCart = []}
+

@@ -56,6 +56,9 @@ const RamenSchema = new mongoose.Schema({
         default: false,
         required: false,
     },
+}, {
+    timestamps: true,
+    collection: 'ramen',
 });
 
 module.exports = mongoose.model('Ramen', RamenSchema);

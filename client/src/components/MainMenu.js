@@ -131,6 +131,7 @@ const MainMenu = () => {
                     <div>
                         <div className="InnerRight">
                             <h3>My Favorite Bowl</h3>
+                            <p>the user favorite bowl could populate here!</p>
                             <Button variant="outline-dark">Add to Order</Button>
                         </div>
                         <div className="InnerRight">

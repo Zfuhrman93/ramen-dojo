@@ -1,21 +1,25 @@
 .App {
   text-align: center;
 }
-
-
+h1{
+  color: red;
+}
+h3  {
+  padding: 10px;
+  color: red;
+}
 .SoupBase, .Size, .Toppings, .NoodleType {
   width: 220px;
   margin: 20px;
 }
-.BuildBowl, .InnerRamen  {
+.BuildBowl, .InnerRamen, .Register  {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-.Toppings {
+.Toppings, .Right {
   border: 1px solid black;
 }
-
 .Body {
   display: flex;
   flex-direction: row;
@@ -25,12 +29,8 @@
 }
 .Left {
   border: 1px solid black;
-  /* flex-grow: 2; */
   margin-right: 20px;
   width: 65%;
-}
-.Right  {
-  border: 1px solid black;
 }
 .InnerRight {
   border: 1px solid black;
@@ -40,4 +40,11 @@
 .Apps, .Desserts {
   border: 1px solid black;
   margin: 10px;
+}
+.RegisterBody  {
+  margin-left: 50px;
+}
+.Name, .Address, .UserInfo{
+  width: 100%;
+  margin: 20px;
 }

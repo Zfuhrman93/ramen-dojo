@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import { Form, Button, FloatingLabel } from 'react-bootstrap';
+import axios from 'axios';
 
 
 
 const Register = () => {
 // Defining State Variables 
 
-const [firstName, setFirstName] = ("");
-const [lastName, setLastName] = ("");
+const [firstName, setFirstName] = useState("");
+const [lastName, setLastName] = useState("");
 const [email, setEmail] = useState("");
 const [address, setAddress] = useState("");
 const [city, setCity] = useState("");
 const [state, setState] = useState("");
-const [password, setPassword] = ("");
-const [confirmPassword, setConfirmPassword] = ("");
+const [password, setPassword] = useState("");
+const [confirmPassword, setConfirmPassword] = useState("");
 const [err, setErr] = ("");
 
 
@@ -63,7 +64,7 @@ const handleSubmit = async (e) => {
                         <FloatingLabel controlId="floatingConfirmPassword" label="Confirm Password" className="mb-3" onChange={(e) => setConfirmPassword(e.target.value)}>
                             <Form.Control type="password" placeholder="Password" />
                         </FloatingLabel>
-                        <Button variant="outline-danger">Register</Button>
+                        <Button onClick={handleSubmit} variant="outline-danger">Register</Button>
                     </div>
                 </div>
 

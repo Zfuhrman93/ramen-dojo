@@ -15,7 +15,6 @@ const BuildBowl = () => {
                                 <option>------------</option>
                                 <option>Straight Noodles</option>
                                 <option>Wavy Noodles</option>
-                                <option>Surprise Me</option>
                             </Form.Select>
                         </div>
                         <div className="SoupBase">
@@ -26,7 +25,6 @@ const BuildBowl = () => {
                                 <option>Shio (salt)</option>
                                 <option>Miso (soybean paste)</option>
                                 <option>Tonkotsu (pork bone)</option>
-                                <option>Surprise Me</option>
                             </Form.Select>
                         </div>
                     </div>

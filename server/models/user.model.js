@@ -1,40 +1,53 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
-const UserSchema = mongoose.Schema({
-  firstName: {
-    type: String,
-    required: [true, "Please enter a First Name"]
+const UserSchema = Schema(
+  {
+    firstName: {
+      type: String,
+      required: [true, "Please enter a First Name"]
+    },
+    lastName: {
+      type: String,
+      required: [true, "Please enter a Last Name"]
+    },
+    email: {
+      type: String,
+      required: [true, "Please enter an E-Mail Address"],
+      validate: {
+        validator: (val) => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
+        message: "Please enter a valid E-Mail"
+      }
+    },
+    address: {
+      type: String,
+      required: [true, "Please enter an Address"]
+    },
+    city: {
+      type: String,
+      required: [true, "Please enter a City"]
+    },
+    state: {
+      type: String,
+      required: [true, "Please choose a State"]
+    },
+    password: {
+      type: String,
+      required: [true, "Please enter a password"]
+    },
+    userCart: {
+      type: Array,
+    },
+    // userOrders: [{ type: Schema.Types.ObjectId, ref: 'UserOrders' }]
   },
-  lastName: {
-    type: String,
-    required: [true, "Please enter a Last Name"]
-  },
-  email: {
-    type: String,
-    required: [true, "Please enter an E-Mail Address"],
-    validate: {
-      validator: (val) => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
-      message: "Please enter a valid E-Mail"
-    }
-  },
-  address: {
-    type: String,
-    required: [true, "Please enter an Address"]
-  },
-  city: {
-    type: String,
-    required: [true, "Please enter a City"]
-  },
-  state: {
-    type: String,
-    required: [true, "Please choose a State"]
-  },
-  password: {
-    type: String,
-    required: [true, "Please enter a password"]
-  }
-})
+);
+
+// const UserOrdersSchema = Schema(
+//   {
+//     ramen: [{ type: Schema.Types.ObjectId, ref: 'Ramen' }]
+//   }
+// );
 
 UserSchema.virtual("confirmPassword")
   .get(() => this._confirmPassword)
@@ -63,4 +76,11 @@ UserSchema.pre("save", function (next) {
     })
 })
 
-module.exports = mongoose.model("User", UserSchema);
+UserSchema.method.generateAuthToken = function() {
+  const token = jwt.sign({ _id:this._id }, process.env.FIRST_SECRET_KEY)
+  return token
+};
+
+module.exports = mongoose.model('User', UserSchema);
+// module.exports = mongoose.model('UserCart', UserCartSchema);
+// module.exports = mongoose.model('UserOrders', UserOrdersSchema);

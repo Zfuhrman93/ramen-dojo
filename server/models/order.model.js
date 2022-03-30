@@ -4,12 +4,9 @@ const OrderSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    user: [UserSchema],
-    ramen: [RamenSchema]
 
 }, {
     timestamps: true,
-    collection: 'orders',
 })
 
 module.exports = mongoose.model('Order', OrderSchema);

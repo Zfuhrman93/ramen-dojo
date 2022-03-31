@@ -1,7 +1,8 @@
 // import BuildBowl from './components/BuildBowl';
 import './App.css';
-import AccountMain from './views/AccountMain';
+import OrderMain from './views/OrderMain';
 
+// import AccountMain from './views/AccountMain';
 // import RegisterMain from './views/RegisterMain';
 // import UserMain from './views/UserMain';
 
@@ -20,7 +21,8 @@ function App() {
         {/* <RegisterMain /> */}
       {/* <BuildBowl /> */}
       {/* <UserMain /> */}
-      <AccountMain />
+      {/* <AccountMain /> */}
+      <OrderMain />
 
     </div>
   );

@@ -11,7 +11,6 @@ const OrderMain = () => {
                 <CurrentOrder />
             </div>
         </div>
-     );
+    );
 }
- 
 export default OrderMain;

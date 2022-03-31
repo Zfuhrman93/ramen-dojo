@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Router } from '@reach/router';
 import RegisterMain from './views/RegisterMain';
 import UserMain from './views/UserMain';
+import OrderMain from './views/OrderMain';
 //import BuildBowl from './components/BuildBowl';
 
 
@@ -29,6 +30,7 @@ function App() {
       <Router>
         <RegisterMain path='/login' />
         <UserMain id={userId} path='/' />
+        <OrderMain id={userId} path='/cart' />
       </Router>
     </div>
   );

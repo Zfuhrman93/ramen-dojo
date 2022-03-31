@@ -24,7 +24,6 @@ const Login = () => {
             );
             console.log(result);
             setSuccessMsg("Successful Login!");
-            setTimeout(navigate('/'), 500);
 
         } catch (error) {
             console.log(error.response);

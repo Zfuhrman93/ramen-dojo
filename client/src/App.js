@@ -5,7 +5,8 @@ import { Router } from '@reach/router';
 import RegisterMain from './views/RegisterMain';
 import UserMain from './views/UserMain';
 import OrderMain from './views/OrderMain';
-//import BuildBowl from './components/BuildBowl';
+import AccountMain from './views/AccountMain';
+import BuildBowl from './components/BuildBowl';
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
     async function fetchUserId() {
       try{
         const id = await axios.get('http://localhost:8000/api/protected', { withCredentials: true });
-        setUserId(id);
+        setUserId(id.data);
       }catch(err){
         console.log(err);
       }
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <div className="App">
-      <div class="NameLogo">
+      <div className="NameLogo">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8lbM8e24nx_4Z6XUFFwcSkdGA8dAab1i4eg&usqp=CAU" alt="ramen" className="Logo" />
         <div>
           <h1>Ramen Dojo</h1>
@@ -36,6 +37,8 @@ function App() {
         <RegisterMain path='/login' />
         <UserMain id={userId} path='/' />
         <OrderMain id={userId} path='/cart' />
+        <AccountMain id={userId} path='/edit/:id' />
+        <BuildBowl id={userId} path='/bowl' />
       </Router>
     </div>
   );

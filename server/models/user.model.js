@@ -1,65 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const { Schema } = mongoose;
-
-/* const RamenSchema = new mongoose.Schema({
-  size: {
-    type: String,
-    required: [true, "Please select a ramen bowl size"],
-    enum: {
-      values: ['Small', 'Medium', 'Large'],
-      message: 'Size needs to be Small or Medium or Large'
-    }
-  },
-  soupBase: {
-    type: String,
-    required: [true, "Please select a soup base"],
-    enum: {
-      values: ["Shoyu (soy sauce)", "Shio (salt)", "Miso (soybean paste)", "Tonkotsu (pork bone)"],
-      message: 'Soup base is required'
-    }
-  },
-  chashu: {
-    type: Boolean,
-    default: false,
-    required: [false],
-  },
-  menma: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  moyashi: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  tamago: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  seaweed: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  kamaboko: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  corn: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-  butter: {
-    type: Boolean,
-    default: false,
-    required: false,
-  },
-}); */
 
 const UserSchema = mongoose.Schema({
   firstName: {
@@ -94,14 +34,9 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: [true, "Please enter a password"]
   },
-  //Cart will hold Strings of each Ramen Id for the cart.
   cart: [String]
-  //cart: [{ type: Schema.Types.ObjectId, ref: 'Ramen' }] 
 })
 
-/* Commented out my code while attempting to get the populate way to work. Gave up and went with the String Array, feel free to change if needed  */
-
-//module.exports = mongoose.model('Ramen', RamenSchema);
 
 UserSchema.virtual("confirmPassword")
 .get(() => this._confirmPassword)

@@ -1,11 +1,12 @@
 import {Navbar, Nav, Container} from 'react-bootstrap';
 
-const NavBar = () => {
+const NavBar = (props) => {
+    const { id } = props;
     return (  
         <div>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                <Navbar.Brand href="#home" style={{color: 'red'}}>My Account</Navbar.Brand>
+                <Navbar.Brand href={`/edit/${id}`} style={{color: 'red'}}>My Account</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link href="/cart">My Order</Nav.Link>
                     <Nav.Link href="/">Main Menu</Nav.Link>

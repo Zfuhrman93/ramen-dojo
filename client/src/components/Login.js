@@ -42,7 +42,7 @@ const Login = () => {
                     <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3" onChange={(e) => setPassword(e.target.value)}>
                         <Form.Control type="password" placeholder="Password" />
                     </FloatingLabel>
-                    <Button onClick={handleSubmit} variant="outline-danger">Register</Button>
+                    <Button onClick={handleSubmit} variant="outline-danger">Login</Button>
                     {successMsg && <h3>{successMsg}</h3>}
                     {err && <h3>{err}</h3>}
                 </div>

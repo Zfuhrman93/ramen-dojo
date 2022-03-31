@@ -6,6 +6,6 @@ module.exports = app => {
   app.post('/api/logout', logout);
   app.get('/api/user/:id', getUser);
   app.get('/api/protected', protected);
-  app.put('/api/user/:id/edit', updateUser);
+  app.put('/api/user/:id', updateUser);
   app.delete('/api/user/:id', deleteUser);
 }

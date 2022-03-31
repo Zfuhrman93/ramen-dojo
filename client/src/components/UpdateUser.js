@@ -5,52 +5,62 @@ import { navigate } from '@reach/router';
 
 
 const UpdateUser = (props) => { 
-
+    
     const {id} = (props);
-    const[errors, setErrors] = useState([]);
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
+        
         axios.get(`http://localhost:8000/api/user/${id}`)
             .then((res) => {
-                console.log(res);
+                console.log(res)
                 console.log(res.data);
-                setFirstName(res.data.firstName);
-                setLastName(res.data.lastName);
-                setAddress(res.data.address);
-                setCity(res.data.city);
-                setState(res.data.state);
-                setEmail(res.data.email);
-                setPassword(res.data.password);
+                setFirstName(res.data[0].firstName);
+                setLastName(res.data[0].lastName);
+                setAddress(res.data[0].address);
+                setCity(res.data[0].city);
+                setState(res.data[0].state);
+                setEmail(res.data[0].email);
             })
             .catch((err) => {
                 console.log(err)
             })
-    }, [id])
+    }, [])
     
     const editHandler = (e) => {
         e.preventDefault();
 
         axios.put(`http://localhost:8000/api/user/${id}`,
         {
-            firstName, lastName, address, city, state, email, password
+            firstName, lastName, address, city, state, email
         })
         .then((res) => {
             console.log(res);
             console.log(res.data);
-            // navigate("/")
+            navigate("/")
         })
         .catch ((err) => {
             console.log(err);
             setErrors(err.response.data.errors);
         })
     };
+
+    const handleDelete = (e) => {
+        axios.delete(`http://localhost:8000/api/user/${id}`)
+            .then(res => {
+                console.log(res);
+                navigate('/');
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     return ( 
         <div>
@@ -59,41 +69,31 @@ const UpdateUser = (props) => {
                 <div >
                     <h3>Update Your Account</h3>
                     <div className="Name">
-                        <FloatingLabel controlId="floatingInput" label="First Name" className="mb-3" value={firstName} onChange= {(e) =setFirstName(e.target.value)}>
-                            <Form.Control type="firstname" placeholder="first name" />
-                            {errors.firstName?.message}
+                        <FloatingLabel controlId="floatingInput" label="First Name" className="mb-3">
+                            <Form.Control type="firstname" placeholder="first name" value={firstName} onChange= {(e) => setFirstName(e.target.value)} />
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingInput" label="Last Name" className="mb-3" value={lastName} onChange= {(e) =setLastName(e.target.value)}>
-                            <Form.Control type="lastname" placeholder="last name" />
-                            {errors.lastName?.message}
+                        <FloatingLabel controlId="floatingInput" label="Last Name" className="mb-3">
+                            <Form.Control type="lastname" placeholder="last name" value={lastName} onChange= {(e) => setLastName(e.target.value)} />
                         </FloatingLabel>
                     </div>
                     <div className="Address">
-                        <FloatingLabel controlId="floatingInput" label="Address" className="mb-3" value={address} onChange= {(e) =setAddress(e.target.value)}>
-                            <Form.Control type="address" placeholder="address" />
-                            {errors.address?.message}
+                        <FloatingLabel controlId="floatingInput" label="Address" className="mb-3">
+                            <Form.Control type="address" placeholder="address" value={address} onChange= {(e) => setAddress(e.target.value)} />
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingInput" label="City" className="mb-3" value={city} onChange= {(e) =setCity(e.target.value)}>
-                            <Form.Control type="city" placeholder="city" />
-                            {errors.city?.message}
+                        <FloatingLabel controlId="floatingInput" label="City" className="mb-3">
+                            <Form.Control type="city" placeholder="city" value={city} onChange= {(e) => setCity(e.target.value)} />
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingInput" label="State" className="mb-3" value={state} onChange= {(e) =setState(e.target.value)}>
-                            <Form.Control type="state" placeholder="state" />
-                            {errors.state?.message}
+                        <FloatingLabel controlId="floatingInput" label="State" className="mb-3">
+                            <Form.Control type="state" placeholder="state" value={state} onChange= {(e) => setState(e.target.value)} />
                         </FloatingLabel>
                     </div>
                     <div className="UserInfo">
-                        <FloatingLabel controlId="floatingInput" label="Email" className="mb-3" value={email} onChange= {(e) =setEmail(e.target.value)}>
-                            <Form.Control type="email" placeholder="email@email.com" />
-                            {errors.email?.message}
-                        </FloatingLabel>
-                        <FloatingLabel controlId="floatingPassword" label="Password" className="mb-3" value={password} onChange= {(e) =setPassword(e.target.value)}>
-                            <Form.Control type="password" placeholder="Password" />
-                            {errors.password?.message}
+                        <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
+                            <Form.Control type="email" placeholder="email@email.com" value={email} onChange= {(e) => setEmail(e.target.value)} />
                         </FloatingLabel>
                 
                         <Button variant="outline-danger" type="submit">Update Account</Button>
-                        <Button variant="outline-warning">Delete Account</Button>
+                        <Button variant="outline-warning" onClick={handleDelete}>Delete Account</Button>
                     </div>
                 </div>
 

@@ -2,7 +2,8 @@ import NavBar from "../components/NavBar";
 import OrderHistory from "../components/OrderHistory";
 import UpdateUser from "../components/UpdateUser";
 
-const AccountMain = () => {
+const AccountMain = (props) => {
+    const { id } = props;
     return ( 
         <div>
             <div>
@@ -10,7 +11,7 @@ const AccountMain = () => {
             </div>
             <div className="Account">
                 <div>
-                    <UpdateUser />
+                    <UpdateUser id={id} />
                 </div>
                 <div>
                     <OrderHistory />

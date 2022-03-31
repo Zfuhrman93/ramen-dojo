@@ -65,3 +65,7 @@ h3  {
   margin-top: 40px;
   padding: 10px;
 }
+
+.errors {
+  color: red;
+}

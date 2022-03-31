@@ -30,7 +30,7 @@ const NavBar = (props) => {
                 <Nav className="me-auto">
                     <Nav.Link href="/cart">My Order</Nav.Link>
                     <Nav.Link href="/">Main Menu</Nav.Link>
-                    <Nav.Link href="#bowl">Build Your Bowl</Nav.Link>
+                    <Nav.Link href="/bowl">Build Your Bowl</Nav.Link>
                     <Nav.Link href="/login">Logout</Nav.Link>
                 </Nav>
                 </Container>

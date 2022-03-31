@@ -1,6 +1,28 @@
 import { Card, Button, Form } from 'react-bootstrap';
+import axios from 'axios';
 
-const MainMenu = () => {
+const MainMenu = (props) => {
+    const { id } = props;
+    async function addOrder(item, cost){
+        try{
+            const user = await axios.get(`http://localhost:8000/api/user/${id}`)
+            const currentCart = user.data[0].cart;
+            let currentPrice = user.data[0].cost + cost;
+            console.log(currentCart);
+            try{
+                const userUpdate = await axios.put(`http://localhost:8000/api/user/${id}`, {
+                    cart: [...currentCart, item],
+                    cost: currentPrice
+                })
+                console.log(userUpdate)
+            }catch(err){
+                console.log(err)
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
+
     return ( 
         <div>
             <h2>Main Menu</h2>
@@ -55,7 +77,7 @@ const MainMenu = () => {
                                     Hakata style “Tonkotsu” (pork bone broth boiled over 24 hrs) noodle soup topped with marinated chashu pork, 
                                     kikurage, menma, pickled ginger, sesame, scallions and drizzled with roasted garlic oil (Served with Straight Noodle)
                                     </Card.Text>
-                                    <Button variant="outline-dark">Add to Order</Button>
+                                    <Button onClick={() => addOrder('Tonkatsu Ramen', 17)} variant="outline-dark">Add to Order</Button>
                                 </Card.Body>
                                 </Card>
                             </div>
@@ -67,7 +89,7 @@ const MainMenu = () => {
                                     Pork broth and soy-flavored wavy noodle soup, 
                                     topped with marinated chashu pork, kikurage, menma, pickled ginger, sesame and scallions (Served with Wavy Noodle)
                                     </Card.Text>
-                                    <Button variant="outline-dark">Add to Order</Button>
+                                    <Button onClick={() => addOrder('Shoyu Ramen', 17)} variant="outline-dark">Add to Order</Button>
                                 </Card.Body>
                                 </Card>
                             </div>
@@ -79,7 +101,7 @@ const MainMenu = () => {
                                     Heat up with our spicy minced pork noodle soup topped with marinated chashu pork, kikurage, 
                                     menma, pickled ginger, sesame and scallions (Served with Straight Noodle)
                                     </Card.Text>
-                                    <Button variant="outline-dark">Add to Order</Button>
+                                    <Button onClick={() => addOrder('Kara Kara Tonkotsu Ramen', 17)} variant="outline-dark">Add to Order</Button>
                                 </Card.Body>
                                 </Card>
                             </div>
@@ -91,7 +113,7 @@ const MainMenu = () => {
                                     Miso flavored noodle soup topped with broccoli, cabbage, carrots, onion, snow peas, zucchini, 
                                     pickled ginger, menma, kikurage, corn, beansprout, sesame and scallions (Served with Wavy Noodle)(Vegan)
                                     </Card.Text>
-                                    <Button variant="outline-dark">Add to Order</Button>
+                                    <Button onClick={() => addOrder('Veggie Miso Ramen', 17)} variant="outline-dark">Add to Order</Button>
                                 </Card.Body>
                                 </Card>
                             </div>

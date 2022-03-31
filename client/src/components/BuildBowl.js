@@ -1,9 +1,13 @@
 import {Form, Button } from 'react-bootstrap';
+import NavBar from './NavBar';
 
-
-const BuildBowl = () => {
+const BuildBowl = (props) => {
+    const { id } = props
     return ( 
         <div>
+            <div>
+                <NavBar id={id} />
+            </div>
             <Form.Group>
                 <h2>Build Your Bowl</h2>
                 <p>*builds one bowl*</p>

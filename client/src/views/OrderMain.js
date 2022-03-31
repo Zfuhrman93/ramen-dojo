@@ -3,12 +3,13 @@ import NavBar from "../components/NavBar";
 
 
 
-const OrderMain = () => {
+const OrderMain = (props) => {
+    const { id } = props;
     return ( 
         <div>
-            <NavBar />
+            <NavBar id={id} />
             <div>
-                <CurrentOrder />
+                <CurrentOrder id={id} />
             </div>
         </div>
     );

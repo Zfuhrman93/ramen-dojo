@@ -10,7 +10,7 @@ const UserMain = (props) => {
         <div>
             <NavBar id={id} />
             <div>
-                <MainMenu />
+                <MainMenu id={id} />
             </div>
         </div>
     );

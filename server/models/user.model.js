@@ -44,7 +44,11 @@ const UserSchema = mongoose.Schema({
     required: [true, "Please enter a password"]
 
   },
-  cart: [String]
+  cart: [String],
+  cost: {
+    type: Number,
+    default: 0
+  }
 })
 
 

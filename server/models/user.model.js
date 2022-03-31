@@ -101,12 +101,11 @@ const UserSchema = mongoose.Schema({
 
 /* Commented out my code while attempting to get the populate way to work. Gave up and went with the String Array, feel free to change if needed  */
 
-module.exports = mongoose.model("User", UserSchema);
 //module.exports = mongoose.model('Ramen', RamenSchema);
 
 UserSchema.virtual("confirmPassword")
-  .get(() => this._confirmPassword)
-  .set((value) => (this._confirmPassword = value));
+.get(() => this._confirmPassword)
+.set((value) => (this._confirmPassword = value));
 
 UserSchema.pre("validate", function (next) {
   console.log("Inside Validate");
@@ -130,3 +129,4 @@ UserSchema.pre("save", function (next) {
       console.log(err);
     })
 })
+      module.exports = mongoose.model("User", UserSchema);

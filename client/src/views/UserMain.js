@@ -1,9 +1,12 @@
 import NavBar from "../components/NavBar";
-import MainMenu from "../components/MainMenu"
+import MainMenu from "../components/MainMenu";
+import { navigate } from '@reach/router';
 
 
 
-const UserMain = () => {
+const UserMain = (props) => {
+    const { id } = props;
+    if(!id) navigate('/login');
     return (  
         <div>
             <NavBar />

@@ -4,11 +4,16 @@ const bcrypt = require('bcrypt');
 const UserSchema = mongoose.Schema({
   firstName: {
     type: String,
-    required: [true, "Please enter a First Name"]
+    required: [true, "Please enter a First Name"],
+    minlength: [4, "The user's first name should be at least 4 characters long"],
+
   },
   lastName: {
     type: String,
-    required: [true, "Please enter a Last Name"]
+    required: [true, "Please enter a Last Name"],
+    minlength: [4, "The user's last name should be at least 4 characters long"],
+
+
   },
   email: {
     type: String,
@@ -24,17 +29,26 @@ const UserSchema = mongoose.Schema({
   },
   city: {
     type: String,
-    required: [true, "Please enter a City"]
+    required: [true, "Please enter a City"],
+    minlength: [2, "The city should be at least two letters"],
+
   },
   state: {
     type: String,
-    required: [true, "Please choose a State"]
+    required: [true, "Please choose a State"],
+    minlength: [2, "The state should be at least two letters"],
+
   },
   password: {
     type: String,
     required: [true, "Please enter a password"]
+
   },
-  cart: [String]
+  cart: [String],
+  cost: {
+    type: Number,
+    default: 0
+  }
 })
 
 

@@ -72,26 +72,36 @@ const UpdateUser = (props) => {
                         <FloatingLabel controlId="floatingInput" label="First Name" className="mb-3">
                             <Form.Control type="firstname" placeholder="first name" value={firstName} onChange= {(e) => setFirstName(e.target.value)} />
                         </FloatingLabel>
+                        {errors.firstName ? <p className="errors">{errors.firstName.message}</p> : null}
                         <FloatingLabel controlId="floatingInput" label="Last Name" className="mb-3">
                             <Form.Control type="lastname" placeholder="last name" value={lastName} onChange= {(e) => setLastName(e.target.value)} />
                         </FloatingLabel>
+                        {errors.lastName ? <p className="errors">{errors.lastName.message}</p> : null}
                     </div>
                     <div className="Address">
                         <FloatingLabel controlId="floatingInput" label="Address" className="mb-3">
                             <Form.Control type="address" placeholder="address" value={address} onChange= {(e) => setAddress(e.target.value)} />
                         </FloatingLabel>
+                        {errors.address ? <p className="errors">{errors.address.message}</p> : null}
+
                         <FloatingLabel controlId="floatingInput" label="City" className="mb-3">
                             <Form.Control type="city" placeholder="city" value={city} onChange= {(e) => setCity(e.target.value)} />
                         </FloatingLabel>
+                        {errors.city ? <p className="errors">{errors.city.message}</p> : null}
+
                         <FloatingLabel controlId="floatingInput" label="State" className="mb-3">
                             <Form.Control type="state" placeholder="state" value={state} onChange= {(e) => setState(e.target.value)} />
                         </FloatingLabel>
+                        {errors.state ? <p className="errors">{errors.state.message}</p> : null}
+
                     </div>
                     <div className="UserInfo">
                         <FloatingLabel controlId="floatingInput" label="Email" className="mb-3">
                             <Form.Control type="email" placeholder="email@email.com" value={email} onChange= {(e) => setEmail(e.target.value)} />
                         </FloatingLabel>
-                
+                        {errors.email ? <p className="errors">{errors.email.message}</p> : null}
+
+
                         <Button variant="outline-danger" type="submit">Update Account</Button>
                         <Button variant="outline-warning" onClick={handleDelete}>Delete Account</Button>
                     </div>

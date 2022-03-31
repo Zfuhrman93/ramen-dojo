@@ -6,7 +6,6 @@ import { navigate } from '@reach/router';
 
 const UserMain = (props) => {
     const { id } = props;
-    if(!id) navigate('/login');
     return (  
         <div>
             <NavBar />

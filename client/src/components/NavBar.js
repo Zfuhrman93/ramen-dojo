@@ -7,8 +7,8 @@ const NavBar = () => {
                 <Container>
                 <Navbar.Brand href="#home" style={{color: 'red'}}>My Account</Navbar.Brand>
                 <Nav className="me-auto">
-                    <Nav.Link href="#order">My Order</Nav.Link>
-                    <Nav.Link href="#main">Main Menu</Nav.Link>
+                    <Nav.Link href="/cart">My Order</Nav.Link>
+                    <Nav.Link href="/">Main Menu</Nav.Link>
                     <Nav.Link href="#bowl">Build Your Bowl</Nav.Link>
                     <Nav.Link href="#logout">Logout</Nav.Link>
                 </Nav>

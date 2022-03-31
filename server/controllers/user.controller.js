@@ -17,6 +17,7 @@ const registerUser = async (req, res) => {
     query = await User.findOne({ email: body.email });
     if(query){
       res.status(400).json({ errorMesssage: "User already exists with the E-mail" });
+      console.log(query);
       return;
     }
   }catch(err){
@@ -78,6 +79,15 @@ const login = async (req, res) => {
   .json({ message: "Login Successful" });
 }
 
+const deleteUser = async (req, res) => {
+  try{
+    const deletedUser = await User.deleteOne({ _id: req.params.id });
+    res.json(deletedUser);
+  }catch(err){
+    res.status(400).json(err);
+  }
+}
+
 const protected = async (req, res) => {
   const token = req.cookies.usertoken;
   if(!token){
@@ -98,6 +108,7 @@ module.exports = {
   registerUser,
   updateUser,
   login,
+  deleteUser,
   protected,
   logout
 }

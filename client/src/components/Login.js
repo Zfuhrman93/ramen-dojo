@@ -1,6 +1,7 @@
 import { Form, FloatingLabel,Button } from 'react-bootstrap'
 import axios from "axios";
 import React, { useState } from 'react';
+import { navigate } from '@reach/router';
 
 const Login = () => {
     // Defining State Variables 
@@ -22,7 +23,7 @@ const Login = () => {
             { withCredentials: true }
             );
             console.log(result);
-            setSuccessMsg("Successful Login!")
+            setSuccessMsg("Successful Login!");
 
         } catch (error) {
             console.log(error.response);

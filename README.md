@@ -10,3 +10,7 @@ Jimmy - Back End,
 Zach - Back End,
 Tito - Front End,
 Andrea - Front End
+
+<p align="center">
+  <img src="/demos/sitedemo.gif" />
+</p>

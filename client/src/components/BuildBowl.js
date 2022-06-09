@@ -1,8 +1,21 @@
 import {Form, Button } from 'react-bootstrap';
+import { useState } from 'react'
 import NavBar from './NavBar';
 
 const BuildBowl = (props) => {
     const { id } = props
+    const [ noodleType, setNoodleType ] = useState("")
+    const [ soupBase, setSoupBase ] = useState("");
+    const [ size, setSize ] = useState("");
+    const [ chashu, setChashu ] = useState(false);
+    const [ menma, setMenma ] = useState(false);
+    const [ moyashi, setMoyashi ] = useState(false);
+    const [ tamago, setTamago ] = useState(false);
+    const [ seaweed, setSeaweed ] = useState(false);
+    const [ kamaboko, setKamaboko ] = useState(false);
+    const [ corn, setCorn ] = useState(false);
+    const [ butter, setButter ] = useState(false);
+
     return ( 
         <div>
             <div>
@@ -15,31 +28,31 @@ const BuildBowl = (props) => {
                     <div>
                         <div className="NoodleType">
                             <Form.Label>Noodle Type</Form.Label>
-                            <Form.Select size="lg" >
-                                <option>------------</option>
-                                <option>Straight Noodles</option>
-                                <option>Wavy Noodles</option>
+                            <Form.Select size="lg" onChange={(e) => setNoodleType(e.target.value)} >
+                                <option value="">------------</option>
+                                <option value="Straight Noodles">Straight Noodles</option>
+                                <option value="Wavy Noodles">Wavy Noodles</option>
                             </Form.Select>
                         </div>
                         <div className="SoupBase">
                             <Form.Label>Soup Base</Form.Label>
-                            <Form.Select size="lg" >
+                            <Form.Select size="lg" onChange={(e) => setSoupBase(e.target.value)} >
                                 <option>------------</option>
-                                <option>Shoyu (soy sauce)</option>
-                                <option>Shio (salt)</option>
-                                <option>Miso (soybean paste)</option>
-                                <option>Tonkotsu (pork bone)</option>
+                                <option value="Shoyu (soy sauce)">Shoyu (soy sauce)</option>
+                                <option value="Shio (salt)">Shio (salt)</option>
+                                <option value="Miso (soybean paste)">Miso (soybean paste)</option>
+                                <option value="Tonkotsu (pork bone)">Tonkotsu (pork bone)</option>
                             </Form.Select>
                         </div>
                     </div>
                     <div>
                     <div className="Size">
                         <Form.Label>Size</Form.Label>
-                        <Form.Select size="lg" >
-                            <option>------------</option>
-                            <option>Small</option>
-                            <option>Medium</option>
-                            <option>Large</option>
+                        <Form.Select size="lg" onChange={(e) => setSize(e.target.value)} >
+                            <option value="">------------</option>
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
                         </Form.Select>
                     </div>
                         <div className="Toppings">
@@ -52,6 +65,7 @@ const BuildBowl = (props) => {
                                     name="group1"
                                     type={type}
                                     id={`inline-${type}-1`}
+                                    onChange={(e) => setChashu(e.target.checked)}
                                 />
                                 <Form.Check
                                     inline
@@ -59,6 +73,7 @@ const BuildBowl = (props) => {
                                     name="group1"
                                     type={type}
                                     id={`inline-${type}-2`}
+                                    onChange={(e) => setMenma(e.target.checked)}
                                 />
                                 <Form.Check
                                     inline
@@ -66,6 +81,7 @@ const BuildBowl = (props) => {
                                     name="group1"
                                     type={type}
                                     id={`inline-${type}-1`}
+                                    onChange={(e) => setMoyashi(e.target.checked)}
                                 />
                                 <Form.Check
                                     inline
@@ -73,6 +89,7 @@ const BuildBowl = (props) => {
                                     name="group1"
                                     type={type}
                                     id={`inline-${type}-2`}
+                                    onChange={(e) => setTamago(e.target.checked)}
                                 />
                                 <Form.Check
                                     inline
@@ -80,6 +97,7 @@ const BuildBowl = (props) => {
                                     name="group1"
                                     type={type}
                                     id={`inline-${type}-1`}
+                                    onChange={(e) => setSeaweed(e.target.checked)}
                                 />
                                 <Form.Check
                                     inline
@@ -87,6 +105,7 @@ const BuildBowl = (props) => {
                                     name="group1"
                                     type={type}
                                     id={`inline-${type}-2`}
+                                    onChange={(e) => setCorn(e.target.checked)}
                                 />
                                 <Form.Check
                                     inline
@@ -94,6 +113,7 @@ const BuildBowl = (props) => {
                                     name="group1"
                                     type={type}
                                     id={`inline-${type}-1`}
+                                    onChange={(e) => setKamaboko(e.target.checked)}
                                 />
                                 <Form.Check
                                     inline
@@ -101,6 +121,7 @@ const BuildBowl = (props) => {
                                     name="group1"
                                     type={type}
                                     id={`inline-${type}-2`}
+                                    onChange={(e) => setButter(e.target.checked)}
                                 />
                                 <Form.Check
                                     inline
@@ -117,9 +138,9 @@ const BuildBowl = (props) => {
                 <Button variant="outline-dark">Add to Order</Button>
             </Form.Group>
         </div>
-     );
+    );
 }
- 
+
 export default BuildBowl;
 
 

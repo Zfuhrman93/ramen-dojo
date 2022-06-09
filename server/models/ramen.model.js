@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 const RamenSchema = new mongoose.Schema({
+    noodleType: {
+        type: String,
+        required: [true],
+        enum: {
+            values: ['Straight Noodles', 'Wavy Noodles'],
+            message: 'Please select a vaild noodle type'
+        }
+    },
     size: {
         type: String,
         required: [true, "Please select a ramen bowl size"],

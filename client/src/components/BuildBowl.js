@@ -1,6 +1,7 @@
 import {Form, Button } from 'react-bootstrap';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import NavBar from './NavBar';
+import axios from 'axios'
 
 const BuildBowl = (props) => {
     const { id } = props
@@ -15,6 +16,21 @@ const BuildBowl = (props) => {
     const [ kamaboko, setKamaboko ] = useState(false);
     const [ corn, setCorn ] = useState(false);
     const [ butter, setButter ] = useState(false);
+    const [ ramenID, setRamenID ] = useState("");
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        const data = { noodleType, soupBase, size, chashu, menma, moyashi, tamago, seaweed, kamaboko, corn, butter };
+        try{
+            const result = await axios.post('http://localhost:8000/api/ramen', data)
+            const recent = await axios.get('http://localhost:8000/api/ramen/recent');
+            setRamenID(recent.data[0]._id)
+            console.log(result)
+
+        }catch(err){
+            console.log(err.response)
+        }
+    }
 
     return ( 
         <div>
@@ -135,7 +151,7 @@ const BuildBowl = (props) => {
                         </div>
                     </div>
                 </div>
-                <Button variant="outline-dark">Add to Order</Button>
+                <Button variant="outline-dark" onClick={submitHandler}>Add to Order</Button>
             </Form.Group>
         </div>
     );

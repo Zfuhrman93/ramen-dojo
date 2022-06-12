@@ -3,6 +3,8 @@ import axios from 'axios';
 
 const MainMenu = (props) => {
     const { id } = props;
+
+
     async function addOrder(item, cost){
         try{
             const user = await axios.get(`http://localhost:8000/api/user/${id}`)

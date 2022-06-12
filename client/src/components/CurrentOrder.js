@@ -10,17 +10,14 @@ const CurrentOrder = (props) => {
     const [ cost, setCost ] = useState("");
 
     useEffect(() => {
-        async function fetchUser() {
-            try{
-                const user = await axios.get(`http://localhost:8000/api/user/${id}`);
-                setCart(user.data[0].cart);
-                setCost(user.data[0].cost);
-            }catch(err){
-                console.log(err);
-            }
-        }
-
-        fetchUser();
+      axios.get(`http://localhost:8000/api/user/${id}`)
+        .then(user => {
+          setCart(user.data[0].cart)
+          setCost(user.data[0].cost)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     })
 
     const handleCancel = async () => {
@@ -49,9 +46,9 @@ const CurrentOrder = (props) => {
                 <br/>
 
             </div>
-                <Button onClick={handleCancel} variant="outline-success">Place Order</Button>
-                <Button variant="outline-warning">Update Order</Button>
-                <Button onClick={handleCancel} variant="outline-danger">Cancel Order</Button>
+                <Button type="button" onClick={handleCancel} variant="outline-success">Place Order</Button>
+                <Button type="button" variant="outline-warning">Update Order</Button>
+                <Button type="button" onClick={handleCancel} variant="outline-danger">Cancel Order</Button>
             </div>
         </div>
      );

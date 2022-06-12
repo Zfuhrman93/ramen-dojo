@@ -16,23 +16,40 @@ const BuildBowl = (props) => {
     const [ kamaboko, setKamaboko ] = useState(false);
     const [ corn, setCorn ] = useState(false);
     const [ butter, setButter ] = useState(false);
-    const [ ramenID, setRamenID ] = useState("");
-
+    
+		async function addOrder(item){
+			try{
+					const user = await axios.get(`http://localhost:8000/api/user/${id}`)
+					const currentCart = user.data[0].cart;
+					console.log(currentCart);
+					try{
+							const userUpdate = await axios.put(`http://localhost:8000/api/user/${id}`, {
+									cart: [...currentCart, item]
+							})
+							console.log(userUpdate)
+					}catch(err){
+							console.log(err)
+					}
+			}catch(err){
+					console.log(err)
+			}
+		}
+    
     const submitHandler = async (e) => {
-        e.preventDefault();
-        const data = { noodleType, soupBase, size, chashu, menma, moyashi, tamago, seaweed, kamaboko, corn, butter };
+      e.preventDefault();
+      
+      const data = { noodleType, soupBase, size, chashu, menma, moyashi, tamago, seaweed, kamaboko, corn, butter };
         try{
-            const result = await axios.post('http://localhost:8000/api/ramen', data)
-            const recent = await axios.get('http://localhost:8000/api/ramen/recent');
-            setRamenID(recent.data[0]._id)
-            console.log(result)
-
-        }catch(err){
-            console.log(err.response)
-        }
+              const result = await axios.post('http://localhost:8000/api/ramen', data)
+              const recent = await axios.get('http://localhost:8000/api/ramen/recent');
+              console.log(result)
+							addOrder(recent.data[0]._id)
+          }catch(err){
+              console.log(err.response)
+          }
     }
 
-    return ( 
+			return ( 
         <div>
             <div>
                 <NavBar id={id} />
